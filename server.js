@@ -72,7 +72,12 @@ app.get('/menu', (req,res) => {
 })
 
 
-
+app.get('/menu/:category', (req,res) => {
+    res.render('category.ejs')
+    mains = req.params.mains
+    desserts = req.params.desserts
+    sides = req.params.sides
+})
 
 
 
