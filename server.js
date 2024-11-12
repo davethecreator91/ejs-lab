@@ -71,12 +71,17 @@ app.get('/menu', (req,res) => {
     
 })
 
-
+// send only requested category to category.ejs
 app.get('/menu/:category', (req,res) => {
-    res.render('category.ejs')
-    mains = req.params.mains
-    desserts = req.params.desserts
-    sides = req.params.sides
+
+const category = req.params.category;
+
+const menuItems = RESTAURANT.menu.filter(item => item.category === category)
+
+res.render('category.ejs', {
+    menu:menuItems,
+    category:category
+});
 })
 
 
